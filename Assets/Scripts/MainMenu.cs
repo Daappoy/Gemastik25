@@ -9,7 +9,6 @@ public class MainMenu : MonoBehaviour
     public GameObject MainMenuUI;
     public GameObject SettingsUI;
     public GameObject LevelsUI;
-    public Slider VolumeSlider;
     private GameObject[] Menus;
     public bool isFullscreen = true;
 
@@ -17,17 +16,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("value"))
-        {
-            Debug.Log("There is a key");
-        }
-        else
-        {
-            Debug.Log("There is no key");
-            PlayerPrefs.SetFloat("value", 0.5f); // Set default volume if not set
-            PlayerPrefs.Save();
-        }
-
+    
         Menus = new GameObject[] { MainMenuUI, SettingsUI, LevelsUI };
         ShowOnly(MainMenuUI);
         LoadFullscreenSetting();
@@ -117,32 +106,5 @@ public class MainMenu : MonoBehaviour
             PlayerPrefs.SetInt("fullscreen", 1);
             PlayerPrefs.Save();
         }
-    }
-    public void ChangeVolume(float volume)
-    {
-        AudioListener.volume = volume;
-        PlayerPrefs.SetFloat("value", volume);
-        PlayerPrefs.Save();
-        Debug.Log("Volume set to: " + volume);
-    }
-    public void LoadVolume()
-    {
-        if (PlayerPrefs.HasKey("value"))
-        {
-            float volume = PlayerPrefs.GetFloat("value");
-            AudioListener.volume = volume;
-            VolumeSlider.value = volume;
-            Debug.Log("Loaded volume: " + volume);
-        }
-        else
-        {
-            Debug.Log("No saved volume found, using default.");
-        }
-    }
-    public void SaveSettings()
-    {
-        PlayerPrefs.SetFloat("value", VolumeSlider.value);
-        PlayerPrefs.Save();
-        Debug.Log("Settings saved with volume: " + VolumeSlider.value);
     }
 }

@@ -8,6 +8,9 @@ public class CharSwitch : MonoBehaviour
     public int characterIndex = 0;
     public List<GameObject> characters;
     public PlayerMovement playerMovementScript;
+    public ProbeAnimator probeAnimatorScript;
+    public ScansAnimator scansAnimatorScript;
+    public TobyAnimator tobyAnimatorScript;
 
     private void Start()
     {
@@ -30,6 +33,21 @@ public class CharSwitch : MonoBehaviour
             if (movementScript != null)
             {
                 movementScript.enabled = (i == index);
+            }
+            var probeAnimator = characters[i].GetComponent<ProbeAnimator>();
+            if (probeAnimator != null)
+            {
+                probeAnimator.enabled = (i == index);
+            }
+            var scansAnimator = characters[i].GetComponent<ScansAnimator>();
+            if (scansAnimator != null)
+            {
+                scansAnimator.enabled = (i == index);
+            }
+            var tobyAnimator = characters[i].GetComponent<TobyAnimator>();
+            if (tobyAnimator != null)
+            {
+                tobyAnimator.enabled = (i == index);
             }
         }
 

@@ -9,7 +9,8 @@ public class PlayerMovement : MonoBehaviour
     
     private Rigidbody2D rb;
     [SerializeField]
-    private bool isGrounded;
+    public bool isGrounded;
+    public bool isJumping;
 
     void Start()
     {
@@ -31,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     void Jump()
     {
         // debugging raycast for ground check
-        
+
         Debug.DrawRay(transform.position, Vector2.down * groundCheckDistance, Color.red);
 
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
@@ -39,5 +40,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
+        isJumping = !isGrounded && rb.velocity.y > 0;
     }
 }

@@ -501,7 +501,7 @@ MonoBehaviour:
   jumpForce: 7
   groundLayer:
     serializedVersion: 2
-    m_Bits: 200
+    m_Bits: 1224
   groundCheckDistance: 1.4
   isGrounded: 0
   isJumping: 0

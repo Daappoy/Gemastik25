@@ -165,7 +165,7 @@ MonoBehaviour:
   jumpForce: 8
   groundLayer:
     serializedVersion: 2
-    m_Bits: 328
+    m_Bits: 1352
   groundCheckDistance: 0.8
   isGrounded: 0
   isJumping: 0

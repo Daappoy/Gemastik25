@@ -34,21 +34,21 @@ public class CharSwitch : MonoBehaviour
             {
                 movementScript.enabled = (i == index);
             }
-            var probeAnimator = characters[i].GetComponent<ProbeAnimator>();
-            if (probeAnimator != null)
-            {
-                probeAnimator.enabled = (i == index);
-            }
-            var scansAnimator = characters[i].GetComponent<ScansAnimator>();
-            if (scansAnimator != null)
-            {
-                scansAnimator.enabled = (i == index);
-            }
-            var tobyAnimator = characters[i].GetComponent<TobyAnimator>();
-            if (tobyAnimator != null)
-            {
-                tobyAnimator.enabled = (i == index);
-            }
+            // var probeAnimator = characters[i].GetComponent<ProbeAnimator>();
+            // if (probeAnimator != null)
+            // {
+            //     probeAnimator.enabled = (i == index);
+            // }
+            // var scansAnimator = characters[i].GetComponent<ScansAnimator>();
+            // if (scansAnimator != null)
+            // {
+            //     scansAnimator.enabled = (i == index);
+            // }
+            // var tobyAnimator = characters[i].GetComponent<TobyAnimator>();
+            // if (tobyAnimator != null)
+            // {
+            //     tobyAnimator.enabled = (i == index);
+            // }
         }
 
         characterIndex = index;

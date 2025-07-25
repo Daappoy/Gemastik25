@@ -7,10 +7,11 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject transparentBackground;
     public GameObject MainMenuBackground;
+    public GameObject FinishedBackground;
     private bool escapeKeyPressed = false;
     public bool isPaused = false;
     // Start is called before the first frame update
-    
+
     // public AudioManager audioManager;
     void Start()
     {
@@ -23,7 +24,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !escapeKeyPressed)
         {
-            
+
             escapeKeyPressed = true;
             if (isPaused)
             {
@@ -43,13 +44,14 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        transparentBackground.SetActive(true);
-        // audioManager.PlaySFX(audioManager.Pause);
-        Time.timeScale = 0f;
-        // MainMenuPanel.SetActive(true);
-        MainMenuBackground.SetActive(true);
-        isPaused = true;
-        // audioManager.PlaySFX(audioManager.Pause);
+        if(isPaused) return;
+            transparentBackground.SetActive(true);
+            // audioManager.PlaySFX(audioManager.Pause);
+            Time.timeScale = 0f;
+            // MainMenuPanel.SetActive(true);
+            MainMenuBackground.SetActive(true);
+            isPaused = true;
+            // audioManager.PlaySFX(audioManager.Pause);
     }
 
     public void ResumeGame()
@@ -62,12 +64,19 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         // audioManager.PlaySFX(audioManager.MouseClick);
     }
-    
+
     public void BackToMainMenu()
     {
         // audioManager.PlaySFX(audioManager.MouseClick);
         SceneManager.LoadScene("MainMenu");
         // audioManager.PlaySFX(audioManager.ClickOnPause);
         Time.timeScale = 1f;
+    }
+
+    public void GameFinised()
+    {
+        Time.timeScale = 0f;
+        FinishedBackground.SetActive(true);
+        isPaused = true;
     }
 }

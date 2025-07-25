@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TargetPointScript : MonoBehaviour
 {
+    public PauseMenu pauseMenu; // Reference to the PauseMenu script
     public int playersInZone = 0;
 
     void OnTriggerEnter2D(Collider2D other)
@@ -33,6 +34,7 @@ public class TargetPointScript : MonoBehaviour
             Debug.Log("Three players are in the zone!");
             // Time.timeScale = 0f;
             // Note: Don't reset playersInZone here unless you want the action to happen only once
+            pauseMenu.GameFinised(); // Call the GameFinised method from PauseMenu
         }
     }
 }

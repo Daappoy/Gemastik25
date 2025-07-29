@@ -131,6 +131,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  ButtonOffSprite: {fileID: 21300000, guid: 1d38c53ea1e1513479cebfe1c8c8d96f, type: 3}
+  ButtonOnSprite: {fileID: 21300000, guid: f3d50c825b80c944ab1e411734277743, type: 3}
 --- !u!60 &8295984998673207923
 PolygonCollider2D:
   m_ObjectHideFlags: 0

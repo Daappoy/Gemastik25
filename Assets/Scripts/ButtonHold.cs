@@ -11,8 +11,12 @@ public class ButtonHold : MonoBehaviour
     public UnityEvent ButtonOn;
     public UnityEvent ButtonOff;
 
+    public Sprite ButtonOffSprite;
+    public Sprite ButtonOnSprite;
+
     void Start()
     {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         DoorHold[] doors = FindObjectsOfType<DoorHold>();
         foreach (DoorHold door in doors)
         {
@@ -30,6 +34,12 @@ public class ButtonHold : MonoBehaviour
         {
             isPressed = true;
             ButtonOn?.Invoke();
+            //sprite change
+            SpriteRenderer spriteRenderer = ButtonOnSprite != null ? GetComponent<SpriteRenderer>() : null;
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.sprite = ButtonOnSprite;
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -38,6 +48,12 @@ public class ButtonHold : MonoBehaviour
         {
             isPressed = false;
             ButtonOff?.Invoke();
+            //sprite change
+            SpriteRenderer spriteRenderer = ButtonOffSprite != null ? GetComponent<SpriteRenderer>() : null;
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.sprite = ButtonOffSprite;
+            }
         }
     }
 }

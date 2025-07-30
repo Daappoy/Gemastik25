@@ -78,13 +78,13 @@ public class PopupUI : MonoBehaviour
             {
                 targetPosition = leftPosition.anchoredPosition;
                 targetScale = 0.25f; // Smaller for non-selected
-                targetAlpha = 0.6f;
+                targetAlpha = 0.4f;
             }
             else // Character to the right of selected
             {
                 targetPosition = rightPosition.anchoredPosition;
                 targetScale = 0.25f; // Smaller for non-selected
-                targetAlpha = 0.6f;
+                targetAlpha = 0.4f;
             }
 
             // Smoothly move icons to their target positions

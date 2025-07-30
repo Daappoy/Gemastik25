@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharSwitch : MonoBehaviour
 {
     [SerializeField]
     public int characterIndex = 0;
     public List<GameObject> characters;
-    public PlayerMovement playerMovementScript;
-    public ProbeAnimator probeAnimatorScript;
-    public ScansAnimator scansAnimatorScript;
-    public TobyAnimator tobyAnimatorScript;
+    public List<Image> characterIconsSelected;
+
 
     private void Start()
     {
@@ -29,26 +28,17 @@ public class CharSwitch : MonoBehaviour
 
         for (int i = 0; i < characters.Count; i++)
         {
+            var IconsSelect = characterIconsSelected[i];
+            if(IconsSelect != null)
+            {
+                IconsSelect.enabled = (i == index);
+            }
+
             var movementScript = characters[i].GetComponent<PlayerMovement>();
             if (movementScript != null)
             {
                 movementScript.enabled = (i == index);
             }
-            // var probeAnimator = characters[i].GetComponent<ProbeAnimator>();
-            // if (probeAnimator != null)
-            // {
-            //     probeAnimator.enabled = (i == index);
-            // }
-            // var scansAnimator = characters[i].GetComponent<ScansAnimator>();
-            // if (scansAnimator != null)
-            // {
-            //     scansAnimator.enabled = (i == index);
-            // }
-            // var tobyAnimator = characters[i].GetComponent<TobyAnimator>();
-            // if (tobyAnimator != null)
-            // {
-            //     tobyAnimator.enabled = (i == index);
-            // }
         }
 
         characterIndex = index;

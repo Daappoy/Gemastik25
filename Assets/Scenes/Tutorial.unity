@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 292400856}
   - component: {fileID: 292400855}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ProbeSelected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2394,7 +2394,7 @@ GameObject:
   - component: {fileID: 912372112}
   - component: {fileID: 912372111}
   m_Layer: 5
-  m_Name: Image
+  m_Name: TobySelected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3151,7 +3151,7 @@ GameObject:
   - component: {fileID: 1395563251}
   - component: {fileID: 1395563250}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ScansSelected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3275,10 +3275,10 @@ MonoBehaviour:
   - {fileID: 1536297859}
   - {fileID: 543492545}
   - {fileID: 2125605511}
-  playerMovementScript: {fileID: 0}
-  probeAnimatorScript: {fileID: 0}
-  scansAnimatorScript: {fileID: 0}
-  tobyAnimatorScript: {fileID: 0}
+  characterIconsSelected:
+  - {fileID: 292400855}
+  - {fileID: 1395563250}
+  - {fileID: 912372111}
 --- !u!4 &1540295556
 Transform:
   m_ObjectHideFlags: 0
@@ -4334,13 +4334,13 @@ GameObject:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1907423540}
   - {fileID: 1540295556}
   - {fileID: 1894079346}
   - {fileID: 1002651657}
   - {fileID: 943480735}
   - {fileID: 938247608}
   - {fileID: 1019270598}
-  - {fileID: 1907423540}
   - {fileID: 743412139}
   - {fileID: 915708253}
   - {fileID: 1150833106}

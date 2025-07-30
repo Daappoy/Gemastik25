@@ -26,7 +26,7 @@ public class PopupUI : MonoBehaviour
     void Update()
     {
         // Example trigger for showing the popup
-        if (Input.GetKeyDown(KeyCode.P)) // Press 'P' to show the popup
+        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.E)) // Press 'P' to show the popup
         {
             ShowPopup();
         }

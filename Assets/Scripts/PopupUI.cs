@@ -24,7 +24,7 @@ public class PopupUI : MonoBehaviour
     void Start()
     {
         onscreenPos = popupPanel.anchoredPosition;
-        offscreenPos = new Vector2(onscreenPos.x, onscreenPos.y + popupPanel.rect.height + 20); // adjust 20 as buffer
+        offscreenPos = new Vector2(onscreenPos.x, onscreenPos.y + popupPanel.rect.height + 100); // adjust 70 as buffer
 
         // Start offscreen
         popupPanel.anchoredPosition = offscreenPos;
@@ -71,19 +71,19 @@ public class PopupUI : MonoBehaviour
             {
                 // Selected character goes to center
                 targetPosition = centerPosition.anchoredPosition;
-                targetScale = 0.1f; // Slightly larger for selected character
+                targetScale = 0.3f; // Slightly larger for selected character
                 targetAlpha = 1f;
             }
             else if (i == (currentIndex - 1 + 3) % 3) // Character to the left of selected (with wraparound)
             {
                 targetPosition = leftPosition.anchoredPosition;
-                targetScale = 0.09f; // Smaller for non-selected
+                targetScale = 0.25f; // Smaller for non-selected
                 targetAlpha = 0.6f;
             }
             else // Character to the right of selected
             {
                 targetPosition = rightPosition.anchoredPosition;
-                targetScale = 0.09f; // Smaller for non-selected
+                targetScale = 0.25f; // Smaller for non-selected
                 targetAlpha = 0.6f;
             }
 

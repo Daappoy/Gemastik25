@@ -7,7 +7,7 @@ public class PopupUI : MonoBehaviour
     public CharSwitch CharSwitchScript;
     public RectTransform popupPanel;
     public float slideDuration = 0.5f;
-    public float stayDuration = 2.5f;
+    public float stayDuration = 3f;
     private Vector2 offscreenPos;
     private Vector2 onscreenPos;
 
@@ -33,7 +33,8 @@ public class PopupUI : MonoBehaviour
         UpdateCharacterCarousel();
 
         // Example trigger
-        // ShowPopup();
+        ShowPopup();
+        // WaitForSeconds(1f); // Removed invalid usage
     }
 
     void Update()

@@ -37,7 +37,7 @@ public class TobyAnimator : MonoBehaviour
     public void Jumping()
     {
         // Set animator parameters based on jumping state
-        animator.SetFloat("XVelocity", rb.velocity.x);
+        animator.SetFloat("XVelocity", Mathf.Abs(rb.velocity.x));
         animator.SetFloat("YVelocity", rb.velocity.y);
         animator.SetBool("isJumping", rb.velocity.y > 0);
         animator.SetBool("isGrounded", playerMovementScript.isGrounded);

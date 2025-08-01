@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class CharSwitch : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class CharSwitch : MonoBehaviour
             var movementScript = characters[i].GetComponent<PlayerMovement>();
             if (movementScript != null)
             {
-                movementScript.enabled = (i == index);
+                movementScript.canMove = (i == index);
             }
         }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
@@ -13,19 +14,43 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
 
     // public AudioManager audioManager;
-    void Start()
+    void Awake()
     {
         MainMenuBackground.SetActive(false);
         transparentBackground.SetActive(false);
+
+        DontDestroyOnLoad(this.gameObject);
     }
+    
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !escapeKeyPressed)
-        {
 
-            escapeKeyPressed = true;
+        // if (Input.GetKeyDown(KeyCode.Escape) && !escapeKeyPressed)
+        // {
+
+        //     escapeKeyPressed = true;
+        //     if (isPaused)
+        //     {
+        //         ResumeGame();
+        //     }
+        //     else
+        //     {
+        //         PauseGame();
+        //     }
+        // }
+
+        // if (Input.GetKeyUp(KeyCode.Escape))
+        // {
+        //     escapeKeyPressed = false;
+        // }
+    }
+    
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
             if (isPaused)
             {
                 ResumeGame();
@@ -34,11 +59,6 @@ public class PauseMenu : MonoBehaviour
             {
                 PauseGame();
             }
-        }
-
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            escapeKeyPressed = false;
         }
     }
 
@@ -51,7 +71,6 @@ public class PauseMenu : MonoBehaviour
         // MainMenuPanel.SetActive(true);
         MainMenuBackground.SetActive(true);
         isPaused = true;
-        // audioManager.PlaySFX(audioManager.Pause);
     }
 
     public void ResumeGame()
@@ -62,7 +81,6 @@ public class PauseMenu : MonoBehaviour
         // MainMenuPanel.SetActive(false);
         MainMenuBackground.SetActive(false);
         isPaused = false;
-        // audioManager.PlaySFX(audioManager.MouseClick);
     }
 
     public void BackToMainMenu()

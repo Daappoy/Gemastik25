@@ -44,14 +44,14 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        if(isPaused) return;
-            transparentBackground.SetActive(true);
-            // audioManager.PlaySFX(audioManager.Pause);
-            Time.timeScale = 0f;
-            // MainMenuPanel.SetActive(true);
-            MainMenuBackground.SetActive(true);
-            isPaused = true;
-            // audioManager.PlaySFX(audioManager.Pause);
+        if (isPaused) return;
+        transparentBackground.SetActive(true);
+        // audioManager.PlaySFX(audioManager.Pause);
+        Time.timeScale = 0f;
+        // MainMenuPanel.SetActive(true);
+        MainMenuBackground.SetActive(true);
+        isPaused = true;
+        // audioManager.PlaySFX(audioManager.Pause);
     }
 
     public void ResumeGame()
@@ -78,5 +78,13 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         FinishedBackground.SetActive(true);
         isPaused = true;
+    }
+
+    public void RestartLevel()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        FinishedBackground.SetActive(false);
+        isPaused = false;
     }
 }

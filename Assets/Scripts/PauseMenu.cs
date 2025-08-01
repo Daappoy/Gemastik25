@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public GameObject PauseMenuButton;
     public GameObject transparentBackground;
     public GameObject MainMenuBackground;
     public GameObject FinishedBackground;
@@ -14,12 +15,35 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
 
     // public AudioManager audioManager;
+
+    
     void Awake()
     {
+        // Assign PauseMenuButton in the Inspector or find by name if needed
+        // PauseMenuButton = GameObject.Find("PauseMenuButton");
+        // If you want to ensure it's assigned, you can add a check:
+        if (PauseMenuButton == null)
+        {
+            PauseMenuButton = GameObject.Find("PauseMenuButton");
+        }
+        if (transparentBackground == null)
+        {
+            transparentBackground = GameObject.Find("TransparentBG");
+        }
+        if( MainMenuBackground == null)
+        {
+            MainMenuBackground = GameObject.Find("Background");
+        }
+        if (FinishedBackground == null)
+        {
+            FinishedBackground = GameObject.Find("GameFinished");
+        }
+
+        PauseMenuButton.SetActive(true);
         MainMenuBackground.SetActive(false);
         transparentBackground.SetActive(false);
 
-        DontDestroyOnLoad(this.gameObject);
+        // DontDestroyOnLoad(this.gameObject);
     }
     
 
@@ -64,18 +88,22 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        
         if (isPaused) return;
         transparentBackground.SetActive(true);
+        PauseMenuButton.SetActive(false);
         // audioManager.PlaySFX(audioManager.Pause);
         Time.timeScale = 0f;
         // MainMenuPanel.SetActive(true);
         MainMenuBackground.SetActive(true);
         isPaused = true;
+
     }
 
     public void ResumeGame()
     {
         transparentBackground.SetActive(false);
+        PauseMenuButton.SetActive(true);
         // audioManager.PlaySFX(audioManager.ClickOnPause);
         Time.timeScale = 1f;
         // MainMenuPanel.SetActive(false);

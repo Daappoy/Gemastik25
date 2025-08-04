@@ -6,6 +6,7 @@ public class TargetPointScript : MonoBehaviour
 {
     public PauseMenu pauseMenu; // Reference to the PauseMenu script
     public int playersInZone = 0;
+    private bool gameFinished = false;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -27,13 +28,12 @@ public class TargetPointScript : MonoBehaviour
 
     public void Update()
     {
-        // Check if we have the target number of players
-        if (playersInZone == 3)
+        // Check if we have the target number of players and game hasn't finished yet
+        if (playersInZone == 3 && !gameFinished)
         {
             // Do something when 3 players are in the zone
             Debug.Log("Three players are in the zone!");
-            // Time.timeScale = 0f;
-            // Note: Don't reset playersInZone here unless you want the action to happen only once
+            gameFinished = true; // Set flag to prevent multiple calls
             pauseMenu.GameFinised(); // Call the GameFinised method from PauseMenu
         }
     }

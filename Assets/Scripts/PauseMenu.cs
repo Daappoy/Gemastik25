@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public Animator Transition;
+    public float transitionTime = 1f;
     public GameObject PauseMenuButton;
     public GameObject transparentBackground;
     public GameObject MainMenuBackground;
@@ -111,11 +113,25 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
-    public void BackToMainMenu()
+    public void BackToMainMenu(string sceneName)
     {
-        // audioManager.PlaySFX(audioManager.MouseClick);
-        SceneManager.LoadScene("MainMenu");
-        // audioManager.PlaySFX(audioManager.ClickOnPause);
+        Debug.Log("Function called: BackToMainMenu");
+        StartCoroutine(LoadLevel(sceneName));
+    }
+
+    IEnumerator LoadLevel(string sceneName)
+    {
+        Debug.Log("Loading scene: " + sceneName);
+        Time.timeScale = 1f;
+        isPaused = false;
+        //play animation
+        Transition.SetTrigger("Start");
+        //wait
+        yield return new WaitForSeconds(transitionTime);
+        //Load Scene
+        SceneManager.LoadScene(sceneName);
+        transparentBackground.SetActive(false);
+        MainMenuBackground.SetActive(false);
         Time.timeScale = 1f;
     }
 
@@ -128,9 +144,7 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartLevel()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().name));
         FinishedBackground.SetActive(false);
-        isPaused = false;
     }
 }

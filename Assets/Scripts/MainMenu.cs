@@ -10,6 +10,8 @@ public class MainMenu : MonoBehaviour
     public GameObject SettingsUI;
     public GameObject LevelsUI;
     private GameObject[] Menus;
+    public Animator Transition;
+    public float transitionTime = 1f;
     public bool isFullscreen = true;
 
     //place audiomanager here
@@ -49,6 +51,16 @@ public class MainMenu : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        StartCoroutine(LoadLevel(sceneName));
+    }
+
+    IEnumerator LoadLevel(string sceneName)
+    {
+        //play animation
+        Transition.SetTrigger("Start");
+        //wait
+        yield return new WaitForSeconds(transitionTime);
+        //Load Scene
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
     }

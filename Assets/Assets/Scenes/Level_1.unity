@@ -208,13 +208,13 @@ MonoBehaviour:
       - m_Target: {fileID: 1540295554}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: BackToMainMenu
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MainMenu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &34495370
@@ -340,13 +340,13 @@ MonoBehaviour:
       - m_Target: {fileID: 1540295554}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: BackToMainMenu
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MainMenu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &41079939
@@ -2396,6 +2396,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211232705}
   m_CullTransparentMesh: 1
+--- !u!1001 &1324414090
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4271689335743676590, guid: 2a1763f982798ff4d941a3bf52ffff6b, type: 3}
+      propertyPath: m_Name
+      value: LevelLoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761549213625127705, guid: 2a1763f982798ff4d941a3bf52ffff6b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.42172948
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761549213625127705, guid: 2a1763f982798ff4d941a3bf52ffff6b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2637422
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761549213625127705, guid: 2a1763f982798ff4d941a3bf52ffff6b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.8646011
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761549213625127705, guid: 2a1763f982798ff4d941a3bf52ffff6b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761549213625127705, guid: 2a1763f982798ff4d941a3bf52ffff6b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761549213625127705, guid: 2a1763f982798ff4d941a3bf52ffff6b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761549213625127705, guid: 2a1763f982798ff4d941a3bf52ffff6b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761549213625127705, guid: 2a1763f982798ff4d941a3bf52ffff6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761549213625127705, guid: 2a1763f982798ff4d941a3bf52ffff6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761549213625127705, guid: 2a1763f982798ff4d941a3bf52ffff6b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a1763f982798ff4d941a3bf52ffff6b, type: 3}
+--- !u!95 &1324414091 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8905859803767809789, guid: 2a1763f982798ff4d941a3bf52ffff6b, type: 3}
+  m_PrefabInstance: {fileID: 1324414090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1352977748
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,6 +3053,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca4ba6c70f5ff447b9c7d281cc95786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Transition: {fileID: 1324414091}
+  transitionTime: 1
   PauseMenuButton: {fileID: 1904881233}
   transparentBackground: {fileID: 788613052}
   MainMenuBackground: {fileID: 441568885}
@@ -4498,6 +4562,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1907423540}
+  - {fileID: 1324414090}
   - {fileID: 1540295556}
   - {fileID: 1894079346}
   - {fileID: 1002651657}

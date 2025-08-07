@@ -6,7 +6,8 @@ public class SaveManager : MonoBehaviour
 {
     //make the public and private variables here
 
-    private void Start(){
+    private void Start()
+    {
         LoadSave();
     }
 
@@ -42,8 +43,11 @@ public class SaveManager : MonoBehaviour
 [System.Serializable]
 public class SaveData{
     //put the variables you wanna save here, declare them as public or private and whatnot
-    public SaveData(){ //constructor to initialize the object, kinda like start()
-        //put the base values here, like in a new game, for example
-        //interviewCount = 0
+    public bool PowerIsOff; //example variable to save
+    public SaveData()
+    { //constructor to initialize the object, kinda like start()
+      //put the base values here, like in a new game, for example
+      //interviewCount = 0
+        PowerIsOff = false;
     }
 }

@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public Animator Transition;
+    public Animator NarrationAnimator;
+    public float NarrationTransitionTime = 1.3f;
     public float transitionTime = 1f;
     public GameObject PauseMenuButton;
     public GameObject transparentBackground;
@@ -18,7 +20,7 @@ public class PauseMenu : MonoBehaviour
 
     // public AudioManager audioManager;
 
-    
+
     void Awake()
     {
         // Assign PauseMenuButton in the Inspector or find by name if needed
@@ -32,7 +34,7 @@ public class PauseMenu : MonoBehaviour
         {
             transparentBackground = GameObject.Find("TransparentBG");
         }
-        if( MainMenuBackground == null)
+        if (MainMenuBackground == null)
         {
             MainMenuBackground = GameObject.Find("Background");
         }
@@ -46,6 +48,12 @@ public class PauseMenu : MonoBehaviour
         transparentBackground.SetActive(false);
 
         // DontDestroyOnLoad(this.gameObject);
+        
+        if(SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            Debug.Log("tutorial scene detected");
+            // NarrationAnimator.SetTrigger("Exit");
+        }
     }
     
 

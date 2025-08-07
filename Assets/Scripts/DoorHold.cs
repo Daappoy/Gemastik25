@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,12 @@ using UnityEngine;
 public class DoorHold : MonoBehaviour
 {
     public int DoorHID;
+    public enum DoorInputType { Router, ButtonHold, Electric }
+    public DoorInputType inputType = DoorInputType.ButtonHold;
     public bool isOpen = false;
     public ButtonHold ButtonHold;
+    public Router Router;
+    public ElectricBox ElectricBox;
     [SerializeField]
     private Vector3 InitialPos;
     [SerializeField]
@@ -19,13 +24,41 @@ public class DoorHold : MonoBehaviour
     void Start()
     {
         InitialPos = transform.localPosition;
-        ButtonHold[] buttons = FindObjectsOfType<ButtonHold>();
-        foreach (ButtonHold button in buttons)
+        if (inputType == DoorInputType.ButtonHold)
         {
-            if (button.ButtonHID == DoorHID)
+            ButtonHold[] buttons = FindObjectsOfType<ButtonHold>();
+            foreach (ButtonHold button in buttons)
             {
-                ButtonHold = button;
-                break;
+                if (button.ButtonHID == DoorHID)
+                {
+                    ButtonHold = button;
+                    break;
+                }
+            }
+        }
+        else if (inputType == DoorInputType.Router)
+        {
+            Router[] routers = FindObjectsOfType<Router>();
+            foreach (Router router in routers)
+            {
+                if (router.RouterHID == DoorHID)
+                {
+                    Router = router;
+                    break;
+                }
+            }
+        }
+        // Add Electric input logic here if needed
+        else if (inputType == DoorInputType.Electric)
+        {
+            ElectricBox[] electricBoxes = FindObjectsOfType<ElectricBox>();
+            foreach (ElectricBox electricBox in electricBoxes)
+            {
+                if (electricBox.ElectricBoxHID == DoorHID)
+                {
+                    ElectricBox = electricBox;
+                    break;
+                }
             }
         }
     }
@@ -33,32 +66,50 @@ public class DoorHold : MonoBehaviour
     void Update()
     {
         TargetPos = InitialPos + offset;
-        if (ButtonHold.isPressed == true)
+        if (inputType == DoorInputType.ButtonHold && ButtonHold != null)
         {
-            TargetPos = InitialPos +offset;
-            OpenDoorHold();
+            if (ButtonHold.isPressed)
+            {
+                OpenDoorHold();
+            }
+            else
+            {
+                CloseDoorHold();
+            }
         }
-        else
+        else if (inputType == DoorInputType.Router && Router != null)
         {
-            TargetPos = InitialPos;
-            CloseDoorHold();
+            if (Router.isPressed)
+            {
+                OpenDoorHold();
+            }
+            else
+            {
+                CloseDoorHold();
+            }
+        }
+        // Add Electric input logic here if needed
+        else if (inputType == DoorInputType.Electric && ElectricBox != null)
+        {
+            if (ElectricBox.isPressed)
+            {
+                OpenDoorHold();
+            }
+            else
+            {
+                CloseDoorHold();
+            }
         }
     }
 
     public void OpenDoorHold()
     {
-        if (ButtonHold.isPressed == true)
-        {
-            isOpen = true;
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, TargetPos, MoveSpeed * Time.deltaTime);
-        }
+        isOpen = true;
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, TargetPos, MoveSpeed * Time.deltaTime);
     }
     public void CloseDoorHold()
     {
-        if (ButtonHold.isPressed == false)
-        {
-            isOpen = false;
-            transform.localPosition = Vector3.MoveTowards(transform.localPosition, TargetPos, MoveSpeed * Time.deltaTime);
-        }
+        isOpen = false;
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, InitialPos, MoveSpeed * Time.deltaTime);
     }
 }

@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
     public GameObject LevelsUI;
     private GameObject[] Menus;
     public Animator Transition;
+    public Animator NarrationAnimator;
     public float transitionTime = 1f;
     public bool isFullscreen = true;
 
@@ -56,13 +57,28 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator LoadLevel(string sceneName)
     {
-        //play animation
-        Transition.SetTrigger("Start");
-        //wait
-        yield return new WaitForSeconds(transitionTime);
-        //Load Scene
-        SceneManager.LoadScene(sceneName);
-        Time.timeScale = 1f;
+        if (sceneName != "Tutorial")
+        {
+            Debug.Log("Loading other scene: " + sceneName);
+            //play animation
+            Transition.SetTrigger("Start");
+            //wait
+            yield return new WaitForSeconds(transitionTime);
+            //Load Scene
+            SceneManager.LoadScene(sceneName);
+            Time.timeScale = 1f;
+        }
+        else if (sceneName == "Tutorial")
+        { //jika scenenya tutorial, tunjukkin narasi gamenya
+            Debug.Log("Loading tutorial scene: " + sceneName);
+            //play animation
+            NarrationAnimator.SetTrigger("Enter");
+            //wait
+            yield return new WaitForSeconds(11f);
+            //Load Scene
+            SceneManager.LoadScene(sceneName);
+            Time.timeScale = 1f;
+        }
     }
 
     public void LevelMenu()

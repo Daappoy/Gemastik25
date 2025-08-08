@@ -404,6 +404,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1894079345}
+    - target: {fileID: 5149721164947698449, guid: 2a1763f982798ff4d941a3bf52ffff6b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 7761549213625127705, guid: 2a1763f982798ff4d941a3bf52ffff6b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.42172948
@@ -3471,6 +3475,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6deaf505-a9c3-42d1-ace3-d0332cab22be
     m_ActionName: New action map/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ca47a924-d911-436c-955d-4e69d84f070b
+    m_ActionName: New action map/Fix[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard & mouse
   m_DefaultActionMap: New action map

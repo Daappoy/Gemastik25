@@ -147,6 +147,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 0f;
         FinishedBackground.SetActive(true);
+        PauseMenuButton.SetActive(false);
         isPaused = true;
     }
 

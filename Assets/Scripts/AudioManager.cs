@@ -12,4 +12,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip Pause;
     public AudioClip ClickOnPause;
     public AudioClip MouseClick;
+
+    public void PlaySFX(AudioClip clip)
+    {
+        SFXSource.PlayOneShot(clip);
+    }
 }

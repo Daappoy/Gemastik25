@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
     public bool isFullscreen = true;
 
     //place audiomanager here
+    public AudioManager audioManager;
 
     private void Start()
     {
@@ -51,14 +52,17 @@ public class MainMenu : MonoBehaviour
     public void ShowMainMenu()
     {
         ShowOnly(MainMenuUI);
+        audioManager.PlaySFX(audioManager.MouseClick);
     }
     public void ShowSettings()
     {
         ShowOnly(SettingsUI);
+        audioManager.PlaySFX(audioManager.MouseClick);
     }
     public void ShowLevels()
     {
         ShowOnly(LevelsUI);
+        audioManager.PlaySFX(audioManager.MouseClick);
     }
     public void QuitGame()
     {

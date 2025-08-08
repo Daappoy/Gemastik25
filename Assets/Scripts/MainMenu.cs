@@ -6,12 +6,16 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    public SaveData saveData; // Reference to SaveManager
+    public GameObject PoweroffUI;
+    public GameObject PoweronUI;
     public GameObject MainMenuUI;
     public GameObject SettingsUI;
     public GameObject LevelsUI;
     private GameObject[] Menus;
     public Animator Transition;
     public Animator NarrationAnimator;
+    public Animator PowerAnimator;
     public float transitionTime = 1f;
     public bool isFullscreen = true;
 
@@ -19,7 +23,19 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-    
+        Debug.Log("power is... " + saveData.PowerIsOff);
+        if (saveData.PowerIsOff)
+        {
+            Debug.Log("Power is off, turning off power UI");
+            // PoweroffUI.SetActive(true);
+            // PoweronUI.SetActive(false);
+        }
+        else if (!saveData.PowerIsOff)
+        {
+            Debug.Log("Power is on, turning on power UI");
+            // PoweroffUI.SetActive(false);
+            // PoweronUI.SetActive(true);
+        }
         Menus = new GameObject[] { MainMenuUI, SettingsUI, LevelsUI };
         ShowOnly(MainMenuUI);
         LoadFullscreenSetting();
@@ -69,8 +85,15 @@ public class MainMenu : MonoBehaviour
             Time.timeScale = 1f;
         }
         else if (sceneName == "Tutorial")
-        { //jika scenenya tutorial, tunjukkin narasi gamenya
+        { //kalo player pilih tutorial
             Debug.Log("Loading tutorial scene: " + sceneName);
+            saveData.PowerIsOff = true;
+            Debug.Log("power is..." + saveData.PowerIsOff);
+
+            PowerAnimator.SetTrigger("matiLampu");
+            
+            yield return new WaitForSeconds(2.4f);
+            // PoweronUI.SetActive(false);
             //play animation
             NarrationAnimator.SetTrigger("Enter");
             //wait

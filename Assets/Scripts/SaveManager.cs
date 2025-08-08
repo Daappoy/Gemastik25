@@ -50,4 +50,5 @@ public class SaveData{
       //interviewCount = 0
         PowerIsOff = false;
     }
+    
 }

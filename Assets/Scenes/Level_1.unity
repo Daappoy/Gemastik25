@@ -2408,6 +2408,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 5149721164947698449, guid: 2a1763f982798ff4d941a3bf52ffff6b, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1894079345}
     - target: {fileID: 7761549213625127705, guid: 2a1763f982798ff4d941a3bf52ffff6b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.42172948
@@ -3054,6 +3058,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transition: {fileID: 1324414091}
+  NarrationAnimator: {fileID: 0}
+  NarrationTransitionTime: 1.3
   transitionTime: 1
   PauseMenuButton: {fileID: 1904881233}
   transparentBackground: {fileID: 788613052}

@@ -7,6 +7,8 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Sources")]
     public AudioSource MusicSource;
     public AudioSource SFXSource;
+    public AudioSource WalkingSFXSource; // Dedicated source for walking sounds
+    public AudioSource JumpingSFXSource;
     [Header("Audio Clips")]
     public AudioClip BackgroundMusic;
     public AudioClip Pause;
@@ -17,12 +19,35 @@ public class AudioManager : MonoBehaviour
     public AudioClip SmallWalkSound;
     public AudioClip MediumWalkSound;
     public AudioClip LargeWalkSound;
+    public AudioClip DoorSound;
+    public AudioClip RouterSound;
+    public AudioClip ElectricBoxSound;
 
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);
     }
-    public void StopSFX(AudioClip clip)
+    
+    public void PlayWalkingSFX(AudioClip clip)
+    {
+        if (!WalkingSFXSource.isPlaying)
+        {
+            WalkingSFXSource.clip = clip;
+            WalkingSFXSource.Play();
+        }
+    }
+    
+    public void StopWalkingSFX()
+    {
+        WalkingSFXSource.Stop();
+    }
+
+    public void PlayJumpingSFX(AudioClip clip)
+    {
+        SFXSource.PlayOneShot(clip);
+    }
+    
+    public void StopSFX()
     {
         SFXSource.Stop();
     }

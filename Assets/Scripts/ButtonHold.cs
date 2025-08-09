@@ -60,7 +60,7 @@ public class ButtonHold : MonoBehaviour
             {
                 spriteRenderer.sprite = ButtonOffSprite;
             }
-            audioManager.PlaySFX(audioManager.ButtonSound);
+            // audioManager.PlaySFX(audioManager.ButtonSound);
         }
     }
 }

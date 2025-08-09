@@ -18,11 +18,19 @@ public class DoorHold : MonoBehaviour
     private Vector3 offset;
     [SerializeField]
     private Vector3 TargetPos;
+    public AudioManager audioManager;
+    public bool isOnTargetPosition = true;
+    private bool wasDoorSoundPlaying = false;
 
     public float MoveSpeed = 1f;
 
     void Start()
     {
+        if (audioManager == null)
+        {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
+
         InitialPos = transform.localPosition;
         if (inputType == DoorInputType.ButtonHold)
         {
@@ -66,6 +74,10 @@ public class DoorHold : MonoBehaviour
     void Update()
     {
         TargetPos = InitialPos + offset;
+        
+        // Store previous position to detect movement
+        Vector3 previousPosition = transform.localPosition;
+        
         if (inputType == DoorInputType.ButtonHold && ButtonHold != null)
         {
             if (ButtonHold.isPressed)
@@ -99,6 +111,20 @@ public class DoorHold : MonoBehaviour
             {
                 CloseDoorHold();
             }
+        }
+        
+        bool doorIsMoving = Vector3.Distance(previousPosition, transform.localPosition) > 0.001f;
+        Vector3 currentTarget = isOpen ? TargetPos : InitialPos;
+        isOnTargetPosition = Vector3.Distance(transform.localPosition, currentTarget) < 0.1f;
+        if (doorIsMoving && !wasDoorSoundPlaying)
+        {
+            audioManager.PlaySFX(audioManager.DoorSound);
+            wasDoorSoundPlaying = true;
+        }
+        else if (!doorIsMoving && wasDoorSoundPlaying)
+        {
+            wasDoorSoundPlaying = false;
+            // audioManager.StopSFX(audioManager.DoorSound);
         }
     }
 

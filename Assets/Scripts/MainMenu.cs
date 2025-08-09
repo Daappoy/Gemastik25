@@ -38,7 +38,7 @@ public class MainMenu : MonoBehaviour
             // PoweronUI.SetActive(true);
         }
         Menus = new GameObject[] { MainMenuUI, SettingsUI, LevelsUI };
-        // ShowOnly(MainMenuUI);
+        ShowOnly(MainMenuUI);
         LoadFullscreenSetting();
     }
     private void ShowOnly(GameObject menuToShow)
@@ -51,6 +51,7 @@ public class MainMenu : MonoBehaviour
 
     public void ShowMainMenu()
     {
+        PowerAnimator.SetTrigger("nyalaLampu");
         ShowOnly(MainMenuUI);
         audioManager.PlaySFX(audioManager.MouseClick);
     }

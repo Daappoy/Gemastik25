@@ -14,5 +14,20 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 832b9ecc1c107a84f96a4c51527f3b1c
+  - enabled: 1
+    path: Assets/Scenes/Level_1.unity
+    guid: a0cbeb3737fa6a14c958da85f5b3f7e6
+  - enabled: 1
+    path: Assets/Scenes/Level_2.unity
+    guid: 892e8aafc1b663347a329b1755fba1b7
+  - enabled: 1
+    path: Assets/Scenes/Level_3.unity
+    guid: 176ab3397f949164ba7b34ff6e03a5f2
+  - enabled: 1
+    path: Assets/Scenes/Level_4.unity
+    guid: 3432038b692331b4885d390b9be96342
+  - enabled: 1
+    path: Assets/Scenes/Level_5.unity
+    guid: 09cc9ab02e8ff2b4cb2bf07ee5737df2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: e029cdc9dddb1764c84fb6e8161de8fa, type: 3}

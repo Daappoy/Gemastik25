@@ -8,15 +8,17 @@ public class Router : MonoBehaviour
     public int RouterHID;
     public bool isPressed = false;
     public DoorHold DoorHold;
-    public UnityEvent ButtonOn;
-    public UnityEvent ButtonOff;
-
     public Sprite ButtonOffSprite;
     public Sprite ButtonOnSprite;
     public Animator RouterAnimator;
+    public AudioManager audioManager;
 
     void Start()
     {
+        if (audioManager == null)
+        {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         DoorHold[] doors = FindObjectsOfType<DoorHold>();
         foreach (DoorHold door in doors)
@@ -31,14 +33,12 @@ public class Router : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Replace "Player" with the desired layer name, e.g., "Player"
         int playerLayer = LayerMask.NameToLayer("Small");
         if (collision.gameObject.layer == playerLayer && DoorHold != null)
         {
+            audioManager.PlaySFX(audioManager.RouterSound);
             RouterAnimator.SetTrigger("connected");
             isPressed = true;
-            ButtonOn?.Invoke();
-            //sprite change
             SpriteRenderer spriteRenderer = ButtonOnSprite != null ? GetComponent<SpriteRenderer>() : null;
             if (spriteRenderer != null)
             {
@@ -47,19 +47,5 @@ public class Router : MonoBehaviour
 
         }
     }
-    // private void OnTriggerExit2D(Collider2D collision)
-    // {
-    //     int playerLayer = LayerMask.NameToLayer("Small");
-    //     if (collision.gameObject.layer == playerLayer && DoorHold != null)
-    //     {
-    //         isPressed = false;
-    //         ButtonOff?.Invoke();
-    //         //sprite change
-    //         SpriteRenderer spriteRenderer = ButtonOffSprite != null ? GetComponent<SpriteRenderer>() : null;
-    //         if (spriteRenderer != null)
-    //         {
-    //             spriteRenderer.sprite = ButtonOffSprite;
-    //         }
-    //     }
-    // }
+    
 }

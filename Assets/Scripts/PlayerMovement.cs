@@ -41,21 +41,19 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(moveInput.x * moveSpeed, rb.velocity.y);
 
-
             if (isGrounded && Math.Abs(moveInput.x) > 0 && !isWalkSoundPlaying)
             {
                 StartCoroutine(WalkSound());
             }
         }
-        if (rb.velocity.x == 0 && canMove)
+        
+        // Stop walking sound if player is not moving horizontally or not grounded
+        if (isWalkSoundPlaying && (Math.Abs(moveInput.x) == 0 || !isGrounded))
         {
             Debug.Log("Stopping walk sound");
-            if (isWalkSoundPlaying)
-            {
-                StopCoroutine(WalkSound());
-                isWalkSoundPlaying = false;
-            }
-            audioManager.StopSFX(WalkingClip);
+            StopCoroutine(WalkSound());
+            isWalkSoundPlaying = false;
+            audioManager.StopWalkingSFX();
         }
     }
 
@@ -78,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         isWalkSoundPlaying = true;
         while (isGrounded && canMove && Math.Abs(moveInput.x) > 0)
         {
-            audioManager.PlaySFX(WalkingClip);
+            audioManager.PlayWalkingSFX(WalkingClip);
             yield return new WaitForSeconds(0.5f);
         }
         isWalkSoundPlaying = false;
@@ -86,11 +84,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-
-        if (isGrounded && canMove)
+        if (context.performed && isGrounded && canMove)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            audioManager.PlaySFX(audioManager.JumpSound);
+            audioManager.PlayJumpingSFX(audioManager.JumpSound);
         }
         isJumping = !isGrounded && rb.velocity.y > 0;
     }

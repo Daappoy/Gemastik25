@@ -14,9 +14,14 @@ public class ElectricBox : MonoBehaviour
     public DoorHold DoorHold;
     public Sprite FixedSprite;
     public GameObject FKeyText;
+    public AudioManager audioManager;
 
     void Start()
     {
+        if (audioManager == null)
+        {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
         FKeyText.SetActive(false);
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         DoorHold[] doors = FindObjectsOfType<DoorHold>();
@@ -55,6 +60,7 @@ public class ElectricBox : MonoBehaviour
     {
         if (context.performed && canInteract)
         {
+            audioManager.PlaySFX(audioManager.ElectricBoxSound);
             isPressed = true;
             canInteract = false;
             //sprite change

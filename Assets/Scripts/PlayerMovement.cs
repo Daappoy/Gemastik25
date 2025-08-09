@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded = true;
     public bool isJumping = false;
     public AudioManager audioManager;
+    public AudioClip WalkingClip;
+    public CharSwitch charSwitchScript;
     private bool isWalkSoundPlaying = false;
 
     void Awake()
@@ -26,20 +28,34 @@ public class PlayerMovement : MonoBehaviour
         {
             audioManager = FindObjectOfType<AudioManager>();
         }
+        if (charSwitchScript == null)
+        {
+            charSwitchScript = FindObjectOfType<CharSwitch>();
+        }
     }
 
     void Update()
     {
         GroundCheck();
-        if (canMove && isGrounded)
+        if (canMove)
         {
             rb.velocity = new Vector2(moveInput.x * moveSpeed, rb.velocity.y);
-            
+
 
             if (isGrounded && Math.Abs(moveInput.x) > 0 && !isWalkSoundPlaying)
             {
                 StartCoroutine(WalkSound());
             }
+        }
+        if (rb.velocity.x == 0 && canMove)
+        {
+            Debug.Log("Stopping walk sound");
+            if (isWalkSoundPlaying)
+            {
+                StopCoroutine(WalkSound());
+                isWalkSoundPlaying = false;
+            }
+            audioManager.StopSFX(WalkingClip);
         }
     }
 
@@ -62,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         isWalkSoundPlaying = true;
         while (isGrounded && canMove && Math.Abs(moveInput.x) > 0)
         {
-            audioManager.PlaySFX(audioManager.WalkSound);
+            audioManager.PlaySFX(WalkingClip);
             yield return new WaitForSeconds(0.5f);
         }
         isWalkSoundPlaying = false;

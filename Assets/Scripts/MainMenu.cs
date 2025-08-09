@@ -88,25 +88,14 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator LoadLevel(string sceneName)
     {
-        if (sceneName != "Tutorial")
-        {
-            Debug.Log("Loading other scene: " + sceneName);
-            //play animation
-            Transition.SetTrigger("Start");
-            //wait
-            yield return new WaitForSeconds(transitionTime);
-            //Load Scene
-            SceneManager.LoadScene(sceneName);
-            Time.timeScale = 1f;
-        }
-        else if (sceneName == "Tutorial")
-        { //kalo player pilih tutorial
-            Debug.Log("Loading tutorial scene: " + sceneName);
-            saveData.PowerIsOff = true;
-            Debug.Log("power is..." + saveData.PowerIsOff);
-            SceneManager.LoadScene(sceneName);
-            Time.timeScale = 1f;
-        }
+        Debug.Log("Loading other scene: " + sceneName);
+        //play animation
+        Transition.SetTrigger("Start");
+        //wait
+        yield return new WaitForSeconds(transitionTime);
+        //Load Scene
+        SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1f;
     }
 
 

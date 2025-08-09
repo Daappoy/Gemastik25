@@ -774,6 +774,9 @@ MonoBehaviour:
   groundCheckDistance: 0.2
   isGrounded: 0
   isJumping: 0
+  audioManager: {fileID: 0}
+  WalkingClip: {fileID: 8300000, guid: 72e8b4b1d5a45d9489d120a2f01faeb9, type: 3}
+  charSwitchScript: {fileID: 0}
 --- !u!114 &3397335670230080010
 MonoBehaviour:
   m_ObjectHideFlags: 0

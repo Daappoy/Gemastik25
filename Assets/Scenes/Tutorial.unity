@@ -612,9 +612,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: b6529c1ddea4ce542bcf59db6cf39477, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 0d029ddd196793347b136ab4c2e1deb4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0e5f3db1a4ab18840b9ccb30f222be56, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.482
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -742,7 +742,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: b6529c1ddea4ce542bcf59db6cf39477, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3444,12 +3444,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MusicSource: {fileID: 328797095}
   SFXSource: {fileID: 331974123}
-  BackgroundMusic: {fileID: 8300000, guid: 0d029ddd196793347b136ab4c2e1deb4, type: 3}
+  BackgroundMusic: {fileID: 8300000, guid: 0e5f3db1a4ab18840b9ccb30f222be56, type: 3}
   Pause: {fileID: 8300000, guid: d0cbad88bd6d35a43883ab8c39140b37, type: 3}
   ClickOnPause: {fileID: 8300000, guid: 70454428b806c5a4bb365cb6324ed5ec, type: 3}
   MouseClick: {fileID: 8300000, guid: 70454428b806c5a4bb365cb6324ed5ec, type: 3}
-  ButtonSound: {fileID: 8300000, guid: 2f0e7aa4837c7904abefb32c9d4e6f8c, type: 3}
+  ButtonSound: {fileID: 8300000, guid: 0a74bdd3276dc354aa7777b543e8a8a9, type: 3}
   JumpSound: {fileID: 8300000, guid: 05f741535c0be0f4dbb6b86938906ba3, type: 3}
+  SmallWalkSound: {fileID: 8300000, guid: 72e8b4b1d5a45d9489d120a2f01faeb9, type: 3}
+  MediumWalkSound: {fileID: 8300000, guid: ebde50d27bda2ee40859075cd407aae1, type: 3}
+  LargeWalkSound: {fileID: 8300000, guid: 019e8fae098236048b0662f8a2bc079f, type: 3}
 --- !u!114 &1540295560
 MonoBehaviour:
   m_ObjectHideFlags: 0

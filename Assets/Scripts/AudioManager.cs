@@ -14,10 +14,16 @@ public class AudioManager : MonoBehaviour
     public AudioClip MouseClick;
     public AudioClip ButtonSound;
     public AudioClip JumpSound;
-    public AudioClip WalkSound;
+    public AudioClip SmallWalkSound;
+    public AudioClip MediumWalkSound;
+    public AudioClip LargeWalkSound;
 
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);
+    }
+    public void StopSFX(AudioClip clip)
+    {
+        SFXSource.Stop();
     }
 }

@@ -802,7 +802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 0
   moveSpeed: 5
-  jumpForce: 5.8
+  jumpForce: 6.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 5512

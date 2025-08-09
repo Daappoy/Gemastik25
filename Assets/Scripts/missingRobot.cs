@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class missingRobot : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public BoxCollider2D boxCollider;
+    public bool isRobotMissing = false;
     void Start()
     {
-        
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.CompareTag("Player"))
+        {
+            isRobotMissing = true;
+        }
     }
 }

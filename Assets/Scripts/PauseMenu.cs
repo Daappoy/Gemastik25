@@ -14,8 +14,14 @@ public class PauseMenu : MonoBehaviour
     public GameObject transparentBackground;
     public GameObject MainMenuBackground;
     public GameObject FinishedBackground;
+
+    [Header("Robot Missing Panel and script")]
+    public GameObject robotMissingPanel;
+    public missingRobot robotMissingScript;
+
     private bool escapeKeyPressed = false;
     public bool isPaused = false;
+    private bool robotMissingHandled = false;
     // Start is called before the first frame update
 
     // public AudioManager audioManager;
@@ -46,10 +52,12 @@ public class PauseMenu : MonoBehaviour
         PauseMenuButton.SetActive(true);
         MainMenuBackground.SetActive(false);
         transparentBackground.SetActive(false);
+        FinishedBackground.SetActive(false);
+        robotMissingPanel.SetActive(false);
 
         // DontDestroyOnLoad(this.gameObject);
-        
-        if(SceneManager.GetActiveScene().name == "Tutorial")
+
+        if (SceneManager.GetActiveScene().name == "Tutorial")
         {
             Debug.Log("tutorial scene detected");
             // NarrationAnimator.SetTrigger("Exit");
@@ -60,25 +68,19 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RobotMissing();
+    }
 
-        // if (Input.GetKeyDown(KeyCode.Escape) && !escapeKeyPressed)
-        // {
-
-        //     escapeKeyPressed = true;
-        //     if (isPaused)
-        //     {
-        //         ResumeGame();
-        //     }
-        //     else
-        //     {
-        //         PauseGame();
-        //     }
-        // }
-
-        // if (Input.GetKeyUp(KeyCode.Escape))
-        // {
-        //     escapeKeyPressed = false;
-        // }
+    private void RobotMissing()
+    {
+        if (robotMissingScript.isRobotMissing && !robotMissingHandled)
+        {
+            robotMissingPanel.SetActive(true);
+            PauseMenuButton.SetActive(false);
+            isPaused = true;
+            robotMissingHandled = true;
+            Time.timeScale = 0f;
+        }
     }
     
     public void OnPause(InputAction.CallbackContext context)

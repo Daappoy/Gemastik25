@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Store the input value to be used in Update
         moveInput = context.ReadValue<Vector2>();
-        Debug.Log("Player input: " + moveInput);
+        // Debug.Log("Player input: " + moveInput);
     }
 
     void GroundCheck()
@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && canMove)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            Debug.Log("Player jumped");
+            // Debug.Log("Player jumped");
         }
         isJumping = !isGrounded && rb.velocity.y > 0;
     }

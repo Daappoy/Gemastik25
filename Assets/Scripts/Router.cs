@@ -13,6 +13,7 @@ public class Router : MonoBehaviour
 
     public Sprite ButtonOffSprite;
     public Sprite ButtonOnSprite;
+    public Animator RouterAnimator;
 
     void Start()
     {
@@ -28,12 +29,13 @@ public class Router : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // Replace "Player" with the desired layer name, e.g., "Player"
         int playerLayer = LayerMask.NameToLayer("Small");
         if (collision.gameObject.layer == playerLayer && DoorHold != null)
         {
+            RouterAnimator.SetTrigger("connected");
             isPressed = true;
             ButtonOn?.Invoke();
             //sprite change
@@ -42,6 +44,7 @@ public class Router : MonoBehaviour
             {
                 spriteRenderer.sprite = ButtonOnSprite;
             }
+
         }
     }
     // private void OnTriggerExit2D(Collider2D collision)

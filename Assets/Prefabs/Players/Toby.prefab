@@ -452,11 +452,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064f620797f1ea143b122a0e1b08f75a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 0
   moveSpeed: 4.5
   jumpForce: 7
   groundLayer:
     serializedVersion: 2
-    m_Bits: 1224
+    m_Bits: 5320
   groundCheckDistance: 1.4
   isGrounded: 0
   isJumping: 0

@@ -13,9 +13,14 @@ public class ButtonHold : MonoBehaviour
 
     public Sprite ButtonOffSprite;
     public Sprite ButtonOnSprite;
+    public AudioManager audioManager;
 
     void Start()
     {
+        if (audioManager == null)
+        {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         DoorHold[] doors = FindObjectsOfType<DoorHold>();
         foreach (DoorHold door in doors)
@@ -28,7 +33,7 @@ public class ButtonHold : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") || collision.CompareTag("Interactable") && DoorHold != null)
         {
@@ -40,6 +45,7 @@ public class ButtonHold : MonoBehaviour
             {
                 spriteRenderer.sprite = ButtonOnSprite;
             }
+            audioManager.PlaySFX(audioManager.ButtonSound);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -54,6 +60,7 @@ public class ButtonHold : MonoBehaviour
             {
                 spriteRenderer.sprite = ButtonOffSprite;
             }
+            audioManager.PlaySFX(audioManager.ButtonSound);
         }
     }
 }

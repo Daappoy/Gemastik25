@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,49 +16,65 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     public bool isGrounded = true;
     public bool isJumping = false;
+    public AudioManager audioManager;
+    private bool isWalkSoundPlaying = false;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (audioManager == null)
+        {
+            audioManager = FindObjectOfType<AudioManager>();
+        }
     }
 
     void Update()
     {
         GroundCheck();
-        
-        // Apply movement continuously based on stored input
-        if (canMove)
+        if (canMove && isGrounded)
         {
             rb.velocity = new Vector2(moveInput.x * moveSpeed, rb.velocity.y);
+            
+
+            if (isGrounded && Math.Abs(moveInput.x) > 0 && !isWalkSoundPlaying)
+            {
+                StartCoroutine(WalkSound());
+            }
         }
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        // Store the input value to be used in Update
         moveInput = context.ReadValue<Vector2>();
-        // Debug.Log("Player input: " + moveInput);
     }
 
     void GroundCheck()
     {
-        // debugging raycast for ground check
-
         Debug.DrawRay(transform.position, Vector2.down * groundCheckDistance, Color.red);
 
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundLayer);
-        // if (Input.GetButtonDown("Jump") && isGrounded)
-        // {
-        //     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        // }
+
         isJumping = !isGrounded && rb.velocity.y > 0;
     }
+
+    IEnumerator WalkSound()
+    {
+        isWalkSoundPlaying = true;
+        while (isGrounded && canMove && Math.Abs(moveInput.x) > 0)
+        {
+            audioManager.PlaySFX(audioManager.WalkSound);
+            yield return new WaitForSeconds(0.5f);
+        }
+        isWalkSoundPlaying = false;
+    }
+
     public void OnJump(InputAction.CallbackContext context)
     {
+
         if (isGrounded && canMove)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            // Debug.Log("Player jumped");
+            audioManager.PlaySFX(audioManager.JumpSound);
         }
         isJumping = !isGrounded && rb.velocity.y > 0;
     }

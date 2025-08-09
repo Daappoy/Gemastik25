@@ -53,7 +53,13 @@ public class PauseMenu : MonoBehaviour
         MainMenuBackground.SetActive(false);
         transparentBackground.SetActive(false);
         FinishedBackground.SetActive(false);
-        robotMissingPanel.SetActive(false);
+
+        if(robotMissingPanel != null)
+        {
+            robotMissingPanel.SetActive(false);
+        }
+        
+
 
         // DontDestroyOnLoad(this.gameObject);
 
@@ -63,12 +69,15 @@ public class PauseMenu : MonoBehaviour
             // NarrationAnimator.SetTrigger("Exit");
         }
     }
-    
+
 
     // Update is called once per frame
     void Update()
     {
-        RobotMissing();
+        if (SceneManager.GetActiveScene().name == "Level_4")
+        {
+            RobotMissing();
+        }
     }
 
     private void RobotMissing()

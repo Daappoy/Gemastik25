@@ -12,6 +12,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip Pause;
     public AudioClip ClickOnPause;
     public AudioClip MouseClick;
+    public AudioClip ButtonSound;
+    public AudioClip JumpSound;
+    public AudioClip WalkSound;
 
     public void PlaySFX(AudioClip clip)
     {

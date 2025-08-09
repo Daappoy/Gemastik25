@@ -38,7 +38,7 @@ public class MainMenu : MonoBehaviour
             // PoweronUI.SetActive(true);
         }
         Menus = new GameObject[] { MainMenuUI, SettingsUI, LevelsUI };
-        ShowOnly(MainMenuUI);
+        // ShowOnly(MainMenuUI);
         LoadFullscreenSetting();
     }
     private void ShowOnly(GameObject menuToShow)
@@ -61,8 +61,19 @@ public class MainMenu : MonoBehaviour
     }
     public void ShowLevels()
     {
-        ShowOnly(LevelsUI);
+        StartCoroutine(LevelMenu());
+    }
+    IEnumerator LevelMenu()
+    {
         audioManager.PlaySFX(audioManager.MouseClick);
+        PowerAnimator.SetTrigger("matiLampu");
+        yield return new WaitForSeconds(2.4f);
+        NarrationAnimator.SetTrigger("Enter");
+        yield return new WaitForSeconds(11f);
+        NarrationAnimator.SetTrigger("Exit");
+
+        Time.timeScale = 1f;
+        ShowOnly(LevelsUI);
     }
     public void QuitGame()
     {
@@ -93,27 +104,11 @@ public class MainMenu : MonoBehaviour
             Debug.Log("Loading tutorial scene: " + sceneName);
             saveData.PowerIsOff = true;
             Debug.Log("power is..." + saveData.PowerIsOff);
-
-            PowerAnimator.SetTrigger("matiLampu");
-            
-            yield return new WaitForSeconds(2.4f);
-            // PoweronUI.SetActive(false);
-            //play animation
-            NarrationAnimator.SetTrigger("Enter");
-            //wait
-            yield return new WaitForSeconds(11f);
-            //Load Scene
             SceneManager.LoadScene(sceneName);
             Time.timeScale = 1f;
         }
     }
 
-    public void LevelMenu()
-    {
-        // SceneManager.LoadScene("MainMenu");
-        Time.timeScale = 1f;
-        ShowOnly(LevelsUI);
-    }
 
     //settings
     public void SetFullscreen()

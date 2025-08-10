@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
     public Animator Transition;
     public Animator NarrationAnimator;
     public Animator PowerAnimator;
+    
     public float transitionTime = 1f;
     public bool isFullscreen = true;
 
@@ -119,14 +120,14 @@ public class MainMenu : MonoBehaviour
         }
         PlayerPrefs.Save();
     }
-    
+
     public void LoadFullscreenSetting()
     {
         if (PlayerPrefs.HasKey("fullscreen"))
         {
             int fullscreenValue = PlayerPrefs.GetInt("fullscreen");
             isFullscreen = fullscreenValue == 1;
-            
+
             if (isFullscreen)
             {
                 Screen.fullScreenMode = FullScreenMode.FullScreenWindow;

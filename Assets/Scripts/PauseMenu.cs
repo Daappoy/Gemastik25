@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    public AudioManager audioManager;
     public Animator Transition;
     public Animator NarrationAnimator;
     public float NarrationTransitionTime = 1.3f;
@@ -18,6 +19,7 @@ public class PauseMenu : MonoBehaviour
     [Header("Robot Missing Panel and script")]
     public GameObject robotMissingPanel;
     public missingRobot robotMissingScript;
+    public Animator OutroAnimator;
 
     private bool escapeKeyPressed = false;
     public bool isPaused = false;
@@ -54,11 +56,11 @@ public class PauseMenu : MonoBehaviour
         transparentBackground.SetActive(false);
         FinishedBackground.SetActive(false);
 
-        if(robotMissingPanel != null)
+        if (robotMissingPanel != null)
         {
             robotMissingPanel.SetActive(false);
         }
-        
+
 
 
         // DontDestroyOnLoad(this.gameObject);
@@ -91,7 +93,7 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 0f;
         }
     }
-    
+
     public void OnPause(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -109,7 +111,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        
+
         if (isPaused) return;
         transparentBackground.SetActive(true);
         PauseMenuButton.SetActive(false);
@@ -138,6 +140,12 @@ public class PauseMenu : MonoBehaviour
         StartCoroutine(LoadLevel(sceneName));
     }
 
+    public void LoadNextLevel(string sceneName)
+    {
+        Debug.Log("Function called: LoadNextLevel");
+        StartCoroutine(LoadLevel(sceneName));
+    }
+
     IEnumerator LoadLevel(string sceneName)
     {
         Debug.Log("Loading scene: " + sceneName);
@@ -154,6 +162,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    [ContextMenu("trigger Game Finished")] 
     public void GameFinised()
     {
         Time.timeScale = 0f;
@@ -166,5 +175,23 @@ public class PauseMenu : MonoBehaviour
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().name));
         FinishedBackground.SetActive(false);
+    }
+
+    public void PlayOutro()
+    {
+        Time.timeScale = 1f;
+        FinishedBackground.SetActive(false);
+        audioManager.EndingSoundSource.mute = false;
+        audioManager.EndingSoundSource.Play();
+        audioManager.MusicSource.mute = true;
+        StartCoroutine(PlayOutroAnimation());
+    }
+
+    IEnumerator PlayOutroAnimation()
+    {
+        Debug.Log("Playing outro animation");
+        OutroAnimator.SetTrigger("OutroStart");
+        yield return new WaitForSeconds(25f);
+        BackToMainMenu("MainMenu");
     }
 }

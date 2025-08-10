@@ -34,7 +34,7 @@ public class Router : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         int playerLayer = LayerMask.NameToLayer("Small");
-        if (collision.gameObject.layer == playerLayer && DoorHold != null)
+        if (collision.gameObject.layer == playerLayer && DoorHold != null && !isPressed)
         {
             audioManager.PlaySFX(audioManager.RouterSound);
             RouterAnimator.SetTrigger("connected");

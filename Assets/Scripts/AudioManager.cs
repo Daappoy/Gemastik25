@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     [Header("Audio Sources")]
     public AudioSource MusicSource;
+    public AudioSource EndingSoundSource;
     public AudioSource SFXSource;
     public AudioSource WalkingSFXSource; // Dedicated source for walking sounds
     public AudioSource JumpingSFXSource;

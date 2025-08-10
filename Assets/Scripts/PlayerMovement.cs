@@ -47,10 +47,8 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         
-        // Stop walking sound if player is not moving horizontally or not grounded
         if (isWalkSoundPlaying && (Math.Abs(moveInput.x) == 0 || !isGrounded))
         {
-            Debug.Log("Stopping walk sound");
             StopCoroutine(WalkSound());
             isWalkSoundPlaying = false;
             audioManager.StopWalkingSFX();

@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Callbacks;
+
 using UnityEngine;
 
 public class ProbeAnimator : MonoBehaviour
@@ -20,26 +18,21 @@ public class ProbeAnimator : MonoBehaviour
 
     void Update()
     {
-        // Update velocity values every frame
         velocityX = Mathf.Abs(rb.velocity.x);
         velocityY = rb.velocity.y;
         
-        // Debug.Log(velocityY);
         facing();
         isJumping();
     }
 
     public void facing()
     {
-        // Example of how you might use the animator and rb in Update
         if (rb.velocity.x > 0.2f)
         {
-            // Flip the player to face right
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
         else if (rb.velocity.x < -0.2f)
         {
-            // Flip the player to face left
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
     }

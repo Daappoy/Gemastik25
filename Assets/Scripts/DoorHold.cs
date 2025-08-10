@@ -56,7 +56,7 @@ public class DoorHold : MonoBehaviour
                 }
             }
         }
-        // Add Electric input logic here if needed
+       
         else if (inputType == DoorInputType.Electric)
         {
             ElectricBox[] electricBoxes = FindObjectsOfType<ElectricBox>();
@@ -75,7 +75,6 @@ public class DoorHold : MonoBehaviour
     {
         TargetPos = InitialPos + offset;
         
-        // Store previous position to detect movement
         Vector3 previousPosition = transform.localPosition;
         
         if (inputType == DoorInputType.ButtonHold && ButtonHold != null)
@@ -100,7 +99,6 @@ public class DoorHold : MonoBehaviour
                 CloseDoorHold();
             }
         }
-        // Add Electric input logic here if needed
         else if (inputType == DoorInputType.Electric && ElectricBox != null)
         {
             if (ElectricBox.isPressed)
@@ -124,7 +122,6 @@ public class DoorHold : MonoBehaviour
         else if (!doorIsMoving && wasDoorSoundPlaying)
         {
             wasDoorSoundPlaying = false;
-            // audioManager.StopSFX(audioManager.DoorSound);
         }
     }
 

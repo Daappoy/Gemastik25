@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
+
 
 public class CharSwitch : MonoBehaviour
 {
@@ -23,7 +22,6 @@ public class CharSwitch : MonoBehaviour
     {
         if (index < 0 || index >= characters.Count)
         {
-            Debug.LogWarning("Character index out of range.");
             return;
         }
 

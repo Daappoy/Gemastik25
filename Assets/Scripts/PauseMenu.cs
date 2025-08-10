@@ -24,16 +24,10 @@ public class PauseMenu : MonoBehaviour
     private bool escapeKeyPressed = false;
     public bool isPaused = false;
     private bool robotMissingHandled = false;
-    // Start is called before the first frame update
-
-    // public AudioManager audioManager;
 
 
     void Awake()
     {
-        // Assign PauseMenuButton in the Inspector or find by name if needed
-        // PauseMenuButton = GameObject.Find("PauseMenuButton");
-        // If you want to ensure it's assigned, you can add a check:
         if (PauseMenuButton == null)
         {
             PauseMenuButton = GameObject.Find("PauseMenuButton");
@@ -60,20 +54,7 @@ public class PauseMenu : MonoBehaviour
         {
             robotMissingPanel.SetActive(false);
         }
-
-
-
-        // DontDestroyOnLoad(this.gameObject);
-
-        if (SceneManager.GetActiveScene().name == "Tutorial")
-        {
-            Debug.Log("tutorial scene detected");
-            // NarrationAnimator.SetTrigger("Exit");
-        }
     }
-
-
-    // Update is called once per frame
     void Update()
     {
         if (SceneManager.GetActiveScene().name == "Level_4")
@@ -115,9 +96,7 @@ public class PauseMenu : MonoBehaviour
         if (isPaused) return;
         transparentBackground.SetActive(true);
         PauseMenuButton.SetActive(false);
-        // audioManager.PlaySFX(audioManager.Pause);
         Time.timeScale = 0f;
-        // MainMenuPanel.SetActive(true);
         MainMenuBackground.SetActive(true);
         isPaused = true;
 
@@ -127,9 +106,7 @@ public class PauseMenu : MonoBehaviour
     {
         transparentBackground.SetActive(false);
         PauseMenuButton.SetActive(true);
-        // audioManager.PlaySFX(audioManager.ClickOnPause);
         Time.timeScale = 1f;
-        // MainMenuPanel.SetActive(false);
         MainMenuBackground.SetActive(false);
         isPaused = false;
     }
@@ -151,11 +128,11 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Loading scene: " + sceneName);
         Time.timeScale = 1f;
         isPaused = false;
-        //play animation
+        //mainin animator
         Transition.SetTrigger("Start");
-        //wait
+        //delay
         yield return new WaitForSeconds(transitionTime);
-        //Load Scene
+        //Scene ngeload
         SceneManager.LoadScene(sceneName);
         transparentBackground.SetActive(false);
         MainMenuBackground.SetActive(false);

@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using TMPro;
+
 
 public class ElectricBox : MonoBehaviour
 {
@@ -37,7 +33,6 @@ public class ElectricBox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Replace "Player" with the desired layer name, e.g., "Player"
         int playerLayer = LayerMask.NameToLayer("Medium");
         if (collision.gameObject.layer == playerLayer && DoorHold != null)
         {
@@ -63,7 +58,6 @@ public class ElectricBox : MonoBehaviour
             audioManager.PlaySFX(audioManager.ElectricBoxSound);
             isPressed = true;
             canInteract = false;
-            //sprite change
             SpriteRenderer spriteRenderer = FixedSprite != null ? GetComponent<SpriteRenderer>() : null;
             if (spriteRenderer != null)
             {

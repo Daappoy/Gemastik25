@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class TargetPointScript : MonoBehaviour
 {
-    public PauseMenu pauseMenu; // Reference to the PauseMenu script
+    public PauseMenu pauseMenu; 
     public int playersInZone = 0;
     private bool gameFinished = false;
 
@@ -28,13 +27,11 @@ public class TargetPointScript : MonoBehaviour
 
     public void Update()
     {
-        // Check if we have the target number of players and game hasn't finished yet
         if (playersInZone == 3 && !gameFinished)
         {
-            // Do something when 3 players are in the zone
             Debug.Log("Three players are in the zone!");
-            gameFinished = true; // Set flag to prevent multiple calls
-            pauseMenu.GameFinised(); // Call the GameFinised method from PauseMenu
+            gameFinished = true;
+            pauseMenu.GameFinised(); 
         }
     }
 }

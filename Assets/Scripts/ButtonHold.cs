@@ -39,7 +39,6 @@ public class ButtonHold : MonoBehaviour
         {
             isPressed = true;
             ButtonOn?.Invoke();
-            //sprite change
             SpriteRenderer spriteRenderer = ButtonOnSprite != null ? GetComponent<SpriteRenderer>() : null;
             if (spriteRenderer != null)
             {
@@ -54,13 +53,11 @@ public class ButtonHold : MonoBehaviour
         {
             isPressed = false;
             ButtonOff?.Invoke();
-            //sprite change
             SpriteRenderer spriteRenderer = ButtonOffSprite != null ? GetComponent<SpriteRenderer>() : null;
             if (spriteRenderer != null)
             {
                 spriteRenderer.sprite = ButtonOffSprite;
             }
-            // audioManager.PlaySFX(audioManager.ButtonSound);
         }
     }
 }

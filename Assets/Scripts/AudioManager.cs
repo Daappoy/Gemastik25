@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource MusicSource;
     public AudioSource EndingSoundSource;
     public AudioSource SFXSource;
-    public AudioSource WalkingSFXSource; // Dedicated source for walking sounds
+    public AudioSource WalkingSFXSource;
     public AudioSource JumpingSFXSource;
     [Header("Audio Clips")]
     public AudioClip BackgroundMusic;

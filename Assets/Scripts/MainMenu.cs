@@ -1,9 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-
 public class MainMenu : MonoBehaviour
 {
     public SaveData saveData; // Reference to SaveManager
@@ -19,25 +16,11 @@ public class MainMenu : MonoBehaviour
     
     public float transitionTime = 1f;
     public bool isFullscreen = true;
-
-    //place audiomanager here
     public AudioManager audioManager;
 
     private void Start()
     {
         Debug.Log("power is... " + saveData.PowerIsOff);
-        if (saveData.PowerIsOff)
-        {
-            Debug.Log("Power is off, turning off power UI");
-            // PoweroffUI.SetActive(true);
-            // PoweronUI.SetActive(false);
-        }
-        else if (!saveData.PowerIsOff)
-        {
-            Debug.Log("Power is on, turning on power UI");
-            // PoweroffUI.SetActive(false);
-            // PoweronUI.SetActive(true);
-        }
         Menus = new GameObject[] { MainMenuUI, SettingsUI, LevelsUI };
         ShowOnly(MainMenuUI);
         LoadFullscreenSetting();
@@ -91,17 +74,15 @@ public class MainMenu : MonoBehaviour
     IEnumerator LoadLevel(string sceneName)
     {
         Debug.Log("Loading other scene: " + sceneName);
-        //play animation
+        //mainin animator
         Transition.SetTrigger("Start");
-        //wait
+        //delay
         yield return new WaitForSeconds(transitionTime);
-        //Load Scene
+        //scene ngeload
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1f;
     }
 
-
-    //settings
     public void SetFullscreen()
     {
         if (!isFullscreen)

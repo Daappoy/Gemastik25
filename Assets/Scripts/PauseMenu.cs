@@ -113,7 +113,8 @@ public class PauseMenu : MonoBehaviour
 
     public void BackToMainMenu(string sceneName)
     {
-        Debug.Log("Function called: BackToMainMenu");
+        PlayerPrefs.SetInt("ShowLevelsUI", 1);
+        PlayerPrefs.Save();
         StartCoroutine(LoadLevel(sceneName));
     }
 

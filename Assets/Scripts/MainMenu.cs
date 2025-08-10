@@ -22,7 +22,18 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("power is... " + saveData.PowerIsOff);
         Menus = new GameObject[] { MainMenuUI, SettingsUI, LevelsUI };
-        ShowOnly(MainMenuUI);
+    
+        if (PlayerPrefs.HasKey("ShowLevelsUI") && PlayerPrefs.GetInt("ShowLevelsUI") == 1)
+        {
+            ShowOnly(LevelsUI);
+            PlayerPrefs.DeleteKey("ShowLevelsUI");
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            ShowOnly(MainMenuUI);
+        }
+        
         LoadFullscreenSetting();
     }
     private void ShowOnly(GameObject menuToShow)
@@ -52,7 +63,7 @@ public class MainMenu : MonoBehaviour
     {
         audioManager.PlaySFX(audioManager.MouseClick);
         PowerAnimator.SetTrigger("matiLampu");
-        yield return new WaitForSeconds(2.4f);
+        yield return new WaitForSeconds(2f);
         NarrationAnimator.SetTrigger("Enter");
         yield return new WaitForSeconds(11f);
         NarrationAnimator.SetTrigger("Exit");

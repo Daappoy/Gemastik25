@@ -454,7 +454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 0
   moveSpeed: 4.5
-  jumpForce: 7
+  jumpForce: 6.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 5320
@@ -511,8 +511,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.58098006, y: -0.0000065770646}
-  m_Size: {x: 7.0503683, y: 7.0954146}
+  m_Offset: {x: 0.58098006, y: 0.14375943}
+  m_Size: {x: 6.36, y: 7.91}
   m_Direction: 0
 --- !u!1 &4738890370859048737
 GameObject:

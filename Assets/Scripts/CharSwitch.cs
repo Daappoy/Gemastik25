@@ -7,10 +7,16 @@ public class CharSwitch : MonoBehaviour
 {
     [SerializeField]
     public int characterIndex = 0;
+
+    [Space]
+    [Header("Character list")]
+    [Tooltip("List of characters to switch between")]
     public List<GameObject> characters;
+    [Space]
+    [Header("Character Icons")]
     public List<Image> characterIconsSelected;
 
-
+    #region Character Switching
     private void Start()
     {
         if (characters.Count > 0)
@@ -28,7 +34,7 @@ public class CharSwitch : MonoBehaviour
         for (int i = 0; i < characters.Count; i++)
         {
             var IconsSelect = characterIconsSelected[i];
-            if(IconsSelect != null)
+            if (IconsSelect != null)
             {
                 IconsSelect.enabled = (i == index);
             }
@@ -65,4 +71,5 @@ public class CharSwitch : MonoBehaviour
             PreviousCharacter();
         }
     }
+    #endregion Character Switching
 }

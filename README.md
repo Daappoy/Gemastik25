@@ -13,6 +13,9 @@
   <img width="100%" alt="gif3" src="https://github.com/Daappoy/Gemastik25/blob/main/Assets/GIFS/Intro.gif">
 </p>
 
+## Work Time
+Programmer: 14 days, 2-3 hours per day average
+
 ##  📜Scripts and Features
 
 You are able to walk, jump and switch characters thanks to these scripts
